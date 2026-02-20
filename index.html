@@ -140,16 +140,16 @@
     <section class="py-8 bg-bgWarm">
       <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
         <div class="overflow-hidden rounded-2xl h-40 md:h-52">
-          <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=900&q=80" alt="프라이빗 클리닉 상담 공간" class="w-full h-full object-cover" loading="lazy" />
+          <img src="images/action-care-explain.webp" alt="프라이빗 클리닉 상담 공간" class="w-full h-full object-cover local-media" loading="lazy" />
         </div>
         <div class="overflow-hidden rounded-2xl h-40 md:h-52">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80" alt="의료진 진단 장면" class="w-full h-full object-cover" loading="lazy" />
+          <img src="images/action-care-main.webp" alt="의료진 진단 장면" class="w-full h-full object-cover local-media" loading="lazy" />
         </div>
         <div class="overflow-hidden rounded-2xl h-40 md:h-52">
-          <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=80" alt="프리미엄 의료 장비" class="w-full h-full object-cover" loading="lazy" />
+          <img src="images/dr-jung.webp" alt="프리미엄 의료 장비" class="w-full h-full object-cover local-media" loading="lazy" />
         </div>
         <div class="overflow-hidden rounded-2xl h-40 md:h-52">
-          <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=900&q=80" alt="안정적인 시술 환경" class="w-full h-full object-cover" loading="lazy" />
+          <img src="images/dr-yang.webp" alt="안정적인 시술 환경" class="w-full h-full object-cover local-media" loading="lazy" />
         </div>
       </div>
     </section>
@@ -197,7 +197,7 @@
               </div>
             </div>
             <div class="mt-5 overflow-hidden rounded-[1.5rem] border border-white/10 h-56 md:h-64">
-              <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1200&q=80" alt="트리니티 여성의원 프리미엄 케어 이미지" class="w-full h-full object-cover opacity-90" loading="lazy" />
+              <img src="images/main-visual.webp" alt="트리니티 여성의원 프리미엄 케어 이미지" class="w-full h-full object-cover opacity-90 local-media" loading="lazy" />
             </div>
           </div>
         </div>
@@ -336,6 +336,15 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("img.local-media").forEach((img) => {
+          img.addEventListener("error", () => {
+            img.style.display = "none";
+            const box = document.createElement("div");
+            box.className = "w-full h-full bg-bgSurface text-textMuted text-xs md:text-sm flex items-center justify-center text-center px-3";
+            box.textContent = "이미지 업로드 대기중: " + img.getAttribute("src");
+            img.parentElement.appendChild(box);
+          });
+        });
         const observer = new IntersectionObserver(
           (entries, obs) => {
             entries.forEach((entry) => {
